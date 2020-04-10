@@ -23,6 +23,9 @@ class City:
         self.lat = lat
         self.lon = lon
 
+    def __repr__(self):
+        return "<{} {} {}>".format(self.name, self.lat, self.lon)
+
 
 cities = []
 
@@ -35,7 +38,7 @@ def cityreader(cities=[]):
         reader = csv.reader(csvfile)
         next(reader, None)
         for row in reader:
-            new_city = City(row[0], row[3], row[4])
+            new_city = City(row[0], float(row[3]), float(row[4]))
             cities.append(new_city)
 
     return cities
@@ -45,7 +48,7 @@ cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(f'Name: {c.name} Lat: {c.lat} Lon: {c.lon}')
+    print(c)
 
 # STRETCH GOAL!
 #
@@ -78,14 +81,14 @@ for c in cities:
 
 # TODO Get latitude and longitude values from the user
 
-cords1 = input("Enter lattitude and longitude separated by \",\" ").split(",")
-cords2 = input(
+coords1 = input("Enter lattitude and longitude separated by \",\" ").split(",")
+coords2 = input(
     "Enter a second lattitude and longitude separated by \",\" ").split(",")
 
-lat1 = float(cords1[0])
-lon1 = float(cords1[1])
-lat2 = float(cords2[0])
-lon2 = float(cords2[1])
+lat1 = float(coords1[0])
+lon1 = float(coords1[1])
+lat2 = float(coords2[0])
+lon2 = float(coords2[1])
 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
